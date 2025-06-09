@@ -1,0 +1,2 @@
+# homelab-docker-stack
+stack
