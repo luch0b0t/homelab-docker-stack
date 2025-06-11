@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    environment:
+      TZ: "America/Santiago"
+      WEBPASSWORD: "changeme"  # Puedes cambiarla luego
+    volumes:
+      - pihole_config:/etc/pihole
+      - dnsmasq_config:/etc/dnsmasq.d
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80"
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+
+volumes:
+  pihole_config:
+  dnsmasq_config:
