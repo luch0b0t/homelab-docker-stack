@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  affine:
+    image: ghcr.io/toeverything/affine-self-hosted:nightly
+    container_name: affine
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - affine_data:/root/.affine
+    restart: unless-stopped
+
+volumes:
+  affine_data:
