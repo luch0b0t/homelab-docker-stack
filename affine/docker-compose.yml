@@ -1,8 +1,7 @@
-version: "3.8"
 
 services:
   affine:
-    image: ghcr.io/toeverything/affine-self-hosted:nightly
+    image: ghcr.io/toeverything/affine-self-hosted:latest
     container_name: affine
     ports:
       - "3002:3000"
