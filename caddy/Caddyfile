@@ -1,7 +1,11 @@
 n8n.local, n8n.home {
-    reverse_proxy n8n:5678
+    reverse_proxy 192.168.100.82:5678
 }
 
 jellyfin.local, media.home {
     reverse_proxy 192.168.100.82:8096
+}
+
+omv.local {
+    reverse_proxy 192.168.100.82:81
 }
