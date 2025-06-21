@@ -1,7 +1,7 @@
 
 services:
   affine:
-    image: ghcr.io/toeverything/affine-self-hosted:latest
+    image: ghcr.io/toeverything/affine-self-hosted:nightly
     container_name: affine
     ports:
       - "3002:3000"
