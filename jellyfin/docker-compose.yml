@@ -10,6 +10,7 @@ services:
       - jellyfin_cache:/cache
       - /mnt/media:/media:ro
     restart: unless-stopped
+    user: "${PUID}:${PGID}"
 
 volumes:
   jellyfin_config:

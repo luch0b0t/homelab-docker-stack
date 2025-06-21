@@ -16,6 +16,7 @@ services:
       - TZ=America/Santiago
     volumes:
       - n8n_data:/home/node/.n8n
+    user: "${PUID}:${PGID}"
 
 volumes:
   n8n_data:
