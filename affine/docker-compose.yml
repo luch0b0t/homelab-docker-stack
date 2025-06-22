@@ -21,7 +21,6 @@ services:
       - "${UPLOAD_LOCATION}:/root/.affine/storage"
       - "${CONFIG_LOCATION}:/root/.affine/config"
     restart: unless-stopped
-    user: "${PUID}:${PGID}"
 
   affine_migration:
     image: ghcr.io/toeverything/affine-graphql:${AFFINE_REVISION:-stable}
