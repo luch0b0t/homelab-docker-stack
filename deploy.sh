@@ -5,12 +5,14 @@ cd "$(dirname "$0")"
 # 1) Cargar .env de la raíz
 if [[ -f .env ]]; then
   set -o allexport; source .env; set +o allexport
+  echo "exported .env"
 fi
 
 # 2) Cargar secretos privados (si existen)
 if [[ -f ~/.ghcr_env ]]; then
   source ~/.ghcr_env
   docker login ghcr.io -u "${GHCR_USER}" -p "${GHCR_PAT}" || true
+  echo "sourcing private secrets"
 fi
 
 echo "==== Pulling changes from GitHub ===="
