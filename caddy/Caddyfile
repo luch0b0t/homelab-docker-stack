@@ -2,10 +2,6 @@ n8n.local {
     reverse_proxy 192.168.100.82:5678
 }
 
-affine.local {
-    reverse_proxy 192.168.100.82:3010
-}
-
 jellyfin.local {
     reverse_proxy 192.168.100.82:8096
 }
