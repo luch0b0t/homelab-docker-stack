@@ -33,93 +33,93 @@ services:
   - Gestión y Monitoreo:
       - Grafana:
           icon: grafana
-          href: http://localhost:3000
+          href: http://192.168.100.82:3000
           description: Análisis y monitoreo
           widget:
             type: grafana
-            url: http://localhost:3000
+            url: http://192.168.100.82:3000
             username: admin
             password: ${GRAFANA_PASSWORD}
       - Portainer:
           icon: portainer
-          href: http://localhost:9000
+          href: http://192.168.100.82:9000
           description: Gestión de contenedores
           widget:
             type: portainer
-            url: http://localhost:9000
+            url: http://192.168.100.82:9000
             env: ${PORTAINER_ENDPOINT}
             key: ${PORTAINER_API_KEY}
       - Homepage:
           icon: homepage
-          href: http://localhost:3001
+          href: http://192.168.100.82:3001
           description: Dashboard principal
-          ping: http://localhost:3001
+          ping: http://192.168.100.82:3001
 
   - Media y Entretenimiento:
       - Jellyfin:
           icon: jellyfin
-          href: http://localhost:8096
+          href: http://192.168.100.82:8096
           description: Servidor multimedia
           widget:
             type: jellyfin
-            url: http://localhost:8096
+            url: http://192.168.100.82:8096
             key: ${JELLYFIN_API_KEY}
       - Sonarr:
           icon: sonarr
-          href: http://localhost:8989
+          href: http://192.168.100.82:8989
           description: Gestión de series
           widget:
             type: sonarr
-            url: http://localhost:8989
+            url: http://192.168.100.82:8989
             key: ${SONARR_API_KEY}
       - Radarr:
           icon: radarr
-          href: http://localhost:7878
+          href: http://192.168.100.82:7878
           description: Gestión de películas
           widget:
             type: radarr
-            url: http://localhost:7878
+            url: http://192.168.100.82:7878
             key: ${RADARR_API_KEY}
       - Jackett:
           icon: jackett
-          href: http://localhost:9117
+          href: http://192.168.100.82:9117
           description: Indexador de torrents
           widget:
             type: jackett
-            url: http://localhost:9117
+            url: http://192.168.100.82:9117
             key: ${JACKETT_API_KEY}
       - Transmission:
           icon: transmission
-          href: http://localhost:9091
+          href: http://192.168.100.82:9091
           description: Cliente torrents
           widget:
             type: transmission
-            url: http://localhost:9091
+            url: http://192.168.100.82:9091
 
   - Productividad y Automatización:
       - n8n:
           icon: n8n
-          href: http://localhost:5678
+          href: http://192.168.100.82:5678
           description: Automatización de flujos
           widget:
             type: n8n
-            url: http://localhost:5678
+            url: http://192.168.100.82:5678
             username: ${N8N_BASIC_AUTH_USER}
             password: ${N8N_BASIC_AUTH_PASSWORD}
       - Excalidraw:
           icon: excalidraw
-          href: http://localhost:5000
+          href: http://192.168.100.82:5000
           description: Pizarra colaborativa
-          ping: http://localhost:5000
+          ping: http://192.168.100.82:5000
 
   - Red y Seguridad:
       - Pi-hole:
           icon: pi-hole
-          href: http://localhost:${PIHOLE_WEBPORT}/admin
+          href: http://192.168.100.82:${PIHOLE_WEBPORT}/admin
           description: Bloqueador de anuncios
           widget:
             type: pihole
-            url: http://localhost:${PIHOLE_WEBPORT}
+            url: http://192.168.100.82:${PIHOLE_WEBPORT}
             key: ${PIHOLE_API_KEY}
 
 # Configuración de bookmarks
