@@ -1,0 +1,152 @@
+# Configuración principal de Homepage
+title: Homelab Dashboard
+subtitle: Gestión centralizada de servicios
+logo: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/homepage.png
+background: https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&h=1080
+
+# Configuración de widgets
+widgets:
+  - resources:
+      cpu: true
+      memory: true
+      disk: /
+      cputemp: true
+      uptime: true
+  - search:
+      provider: duckduckgo
+      target: _blank
+  - datetime:
+      text_size: xl
+      format:
+        dateStyle: long
+        timeStyle: short
+  - openmeteo:
+      label: Clima
+      latitude: -33.4489
+      longitude: -70.6693
+      timezone: America/Santiago
+      units: metric
+      cache: 5
+
+# Configuración de servicios
+services:
+  - Gestión y Monitoreo:
+      - Grafana:
+          icon: grafana
+          href: http://localhost:3000
+          description: Análisis y monitoreo
+          widget:
+            type: grafana
+            url: http://localhost:3000
+            username: admin
+            password: ${GRAFANA_PASSWORD}
+      - Portainer:
+          icon: portainer
+          href: http://localhost:9000
+          description: Gestión de contenedores
+          widget:
+            type: portainer
+            url: http://localhost:9000
+            env: ${PORTAINER_ENDPOINT}
+            key: ${PORTAINER_API_KEY}
+      - Homepage:
+          icon: homepage
+          href: http://localhost:3001
+          description: Dashboard principal
+          ping: http://localhost:3001
+
+  - Media y Entretenimiento:
+      - Jellyfin:
+          icon: jellyfin
+          href: http://localhost:8096
+          description: Servidor multimedia
+          widget:
+            type: jellyfin
+            url: http://localhost:8096
+            key: ${JELLYFIN_API_KEY}
+      - Sonarr:
+          icon: sonarr
+          href: http://localhost:8989
+          description: Gestión de series
+          widget:
+            type: sonarr
+            url: http://localhost:8989
+            key: ${SONARR_API_KEY}
+      - Radarr:
+          icon: radarr
+          href: http://localhost:7878
+          description: Gestión de películas
+          widget:
+            type: radarr
+            url: http://localhost:7878
+            key: ${RADARR_API_KEY}
+      - Jackett:
+          icon: jackett
+          href: http://localhost:9117
+          description: Indexador de torrents
+          widget:
+            type: jackett
+            url: http://localhost:9117
+            key: ${JACKETT_API_KEY}
+      - Transmission:
+          icon: transmission
+          href: http://localhost:9091
+          description: Cliente torrents
+          widget:
+            type: transmission
+            url: http://localhost:9091
+
+  - Productividad y Automatización:
+      - n8n:
+          icon: n8n
+          href: http://localhost:5678
+          description: Automatización de flujos
+          widget:
+            type: n8n
+            url: http://localhost:5678
+            username: ${N8N_BASIC_AUTH_USER}
+            password: ${N8N_BASIC_AUTH_PASSWORD}
+      - Excalidraw:
+          icon: excalidraw
+          href: http://localhost:5000
+          description: Pizarra colaborativa
+          ping: http://localhost:5000
+
+  - Red y Seguridad:
+      - Pi-hole:
+          icon: pi-hole
+          href: http://localhost:${PIHOLE_WEBPORT}/admin
+          description: Bloqueador de anuncios
+          widget:
+            type: pihole
+            url: http://localhost:${PIHOLE_WEBPORT}
+            key: ${PIHOLE_API_KEY}
+
+# Configuración de bookmarks
+bookmarks:
+  - Herramientas de Desarrollo:
+      - GitHub:
+          - icon: github
+            href: https://github.com
+      - Docker Hub:
+          - icon: docker
+            href: https://hub.docker.com
+      - Stack Overflow:
+          - icon: stackoverflow
+            href: https://stackoverflow.com
+
+  - Documentación:
+      - Homepage Docs:
+          - icon: homepage
+            href: https://gethomepage.dev
+      - Docker Docs:
+          - icon: docker
+            href: https://docs.docker.com
+
+  - Utilidades:
+      - Speedtest:
+          - icon: speedtest
+            href: https://speedtest.net
+      - Calculadora:
+          - icon: calculator
+            href: https://calculator.net

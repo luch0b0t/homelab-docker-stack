@@ -15,6 +15,12 @@ The stack is organized into service-specific directories, each containing its ow
   - Automatic SSL certificate management
 
 ### 📊 Monitoring & Management
+- **Homepage** - Application dashboard and launcher
+  - Port: 3001
+  - Centralized access to all services
+  - Real-time monitoring widgets
+  - Data persistence: `/opt/docker-data/homepage`
+
 - **Grafana** - Open-source analytics and monitoring platform
   - Port: 3000
   - Data persistence: `/opt/docker-data/grafana`
@@ -80,13 +86,23 @@ N8N_SECURE_COOKIE=true
 # Pi-hole
 PIHOLE_WEBPASSWORD=your_admin_password
 PIHOLE_WEBPORT=8080
+PIHOLE_API_KEY=your_pihole_api_key
+
+# Homepage Services API Keys (Optional - for enhanced widgets)
+GRAFANA_PASSWORD=your_grafana_password
+JELLYFIN_API_KEY=your_jellyfin_api_key
+SONARR_API_KEY=your_sonarr_api_key
+RADARR_API_KEY=your_radarr_api_key
+JACKETT_API_KEY=your_jackett_api_key
+PORTAINER_ENDPOINT=your_portainer_endpoint
+PORTAINER_API_KEY=your_portainer_api_key
 ```
 
 ### Directory Setup
 Create required directories for persistent data:
 
 ```bash
-sudo mkdir -p /opt/docker-data/{grafana,portainer}
+sudo mkdir -p /opt/docker-data/{grafana,portainer,homepage}
 sudo mkdir -p /mnt/{media,torrents}
 sudo chown -R $USER:$USER /opt/docker-data
 ```
@@ -118,6 +134,7 @@ The deployment script:
 
 ### Caddy Reverse Proxy
 The Caddy configuration routes local domains to internal services:
+- `homepage.local` → Homepage dashboard (port 3001)
 - `n8n.local` → n8n service (port 5678)
 - `jellyfin.local` → Jellyfin service (port 8096)
 - `omv.local` → OpenMediaVault (port 81)
@@ -147,6 +164,9 @@ homelab-docker-stack/
 │   └── docker-compose.yml
 ├── grafana/
 │   └── docker-compose.yml
+├── homepage/
+│   ├── docker-compose.yml
+│   └── settings.yaml
 ├── jellyfin/
 │   └── docker-compose.yml
 ├── media/
@@ -192,6 +212,7 @@ docker-compose -f [service-directory]/docker-compose.yml logs -f
 ## 🌐 Access URLs
 
 After deployment, access services via:
+- **Homepage**: `http://localhost:3001` or `http://homepage.local` (main dashboard)
 - **Grafana**: `http://localhost:3000`
 - **Portainer**: `http://localhost:9000`
 - **n8n**: `http://localhost:5678` or `http://n8n.local` (if DNS configured)
